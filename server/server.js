@@ -11,12 +11,19 @@ const server = app.listen(PORT, () => {
 // INICIALIZACION DE CONTENEDOR
 const Producto1 = new Contenedor('./products/productos.txt')
 
-// GETTERS
+//MIDDLEWARES
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+
+// ENDPOINTS
 app.get('/', (req, res) => {
     res.send('<h1 style="color: red;">Bienvenido a la tienda de productos Don Bigotes</h1>')
 })
-app.get('/productos', (req, res) => {
-    res.send(`El array es ${Producto1.getAll()}`)
+app.get('/productos', async function (req, res) {
+    res.json(await Producto1.getAll())
+})
+app.get('/productoRandom', async function (req, res) {
+    res.json(await Producto1.productRandom())
 })
 
 // MANEJO DE ERRORES EN SERVER

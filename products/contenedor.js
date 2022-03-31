@@ -43,7 +43,7 @@ class Contenedor {
     async getAll() {
         try {
             let contenido = await this.readFile()
-            console.log(contenido);
+            return contenido
         } catch (error) {
             error
         }
@@ -64,6 +64,15 @@ class Contenedor {
             console.log('Contenido borrado');
         } catch (error) {
             console.log(error);
+        }
+    }
+    async productRandom() {
+        try {
+            let contenido = await this.readFile()
+            let random = contenido[Math.floor(Math.random() * contenido.length)]
+            return random
+        } catch (error) {
+            error
         }
     }
 }
