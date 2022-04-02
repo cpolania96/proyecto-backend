@@ -2,6 +2,8 @@
 const Contenedor = require('./../products/contenedor')
 const express = require('express')
 const { urlencoded } = require('express')
+const ReactDOMServer = require('react-dom/server')
+const { default: Formulario } = require('../src/modules/Formulario/Formulario')
 
 // LISTEN SERVER
 const app = express()
@@ -31,7 +33,8 @@ app.use(express.static('public'))
 
 // ENDPOINTS
 app.get('/', (req, res) => {
-    res.send('<h1 style="color: red;">Bienvenido a la tienda de productos Don Bigotes</h1>')
+    let inicio = ReactDOMServer.renderToString(<Formulario />)
+    res.send(inicio)
 })
 app.get('/productos', async function (req, res) {
     res.json(await Producto1.getAll())
