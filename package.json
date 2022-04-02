@@ -5,11 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node server/server.js",
-    "react": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "build-css": "node-sass --include-path scss src/scss/app.scss src/App.css",
+    "build-css": "node-sass --include-path scss src/scss/main.scss public/css/styles.css",
     "watch-css": "nodemon -e scss -x \"npm run build-css\"",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
@@ -19,11 +15,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.3",
-    "express-generator": "^4.16.1",
-    "express-router": "^0.0.1",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "react-router-dom": "^6.3.0"
+    "express-router": "^0.0.1"
   },
   "devDependencies": {
     "node-sass": "^7.0.1",
