@@ -19,6 +19,8 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.3",
+    "express-generator": "^4.16.1",
+    "express-router": "^0.0.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.3.0"
