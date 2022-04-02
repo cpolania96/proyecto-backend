@@ -2,7 +2,6 @@
 const Contenedor = require('./../products/contenedor')
 const express = require('express')
 const { urlencoded } = require('express')
-const ReactDOMServer = require('react-dom/server')
 const { default: Formulario } = require('../src/modules/Formulario/Formulario')
 
 // LISTEN SERVER
