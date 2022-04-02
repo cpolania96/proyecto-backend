@@ -3,6 +3,7 @@ const Contenedor = require('./../products/contenedor')
 const express = require('express')
 const { urlencoded } = require('express')
 const { default: App } = require('../src/App')
+const config = require('./webpack.config')
 
 // LISTEN SERVER
 const app = express()
@@ -24,11 +25,12 @@ app.use('/productos', routerProductos)
 //MIDDLEWARES
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+app.use(webpackDev(webpack(config)))
 routerProductos.use(express.json())
 routerProductos.use(urlencoded({ extended: true }))
 
 // ARCHIVOS ESTÁTICOS
-app.use(express.static('public'))
+app.use(express.static(path.join(__dirname, 'public')))
 
 // ENDPOINTS
 app.get('/', (req, res) => {
