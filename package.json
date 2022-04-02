@@ -4,16 +4,38 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./server/server.js",
-    "dev": "nodemon ./server/server.js"
+    "react": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "build-css": "node-sass --include-path scss src/scss/app.scss src/App.css",
+    "watch-css": "nodemon -e scss -x \"npm run build-css\"",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "server-dev": "nodemon server/server.js",
+    "server-on": "node server/server.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.3"
+    "express": "^4.17.3",
+    "react": "^18.0.0",
+    "react-router-dom": "^6.3.0"
   },
   "devDependencies": {
+    "node-sass": "^7.0.1",
     "nodemon": "^2.0.15"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
