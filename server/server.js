@@ -2,7 +2,7 @@
 const Contenedor = require('./../products/contenedor')
 const express = require('express')
 const { urlencoded } = require('express')
-const { default: Formulario } = require('../src/modules/Formulario/Formulario')
+const { default: App } = require('../src/App')
 
 // LISTEN SERVER
 const app = express()
@@ -32,7 +32,7 @@ app.use(express.static('public'))
 
 // ENDPOINTS
 app.get('/', (req, res) => {
-    let inicio = ReactDOMServer.renderToString(<Formulario />)
+    let inicio = ReactDOMServer.renderToString(<App />)
     res.send(inicio)
 })
 app.get('/productos', async function (req, res) {
