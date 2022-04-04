@@ -15,18 +15,16 @@ server.on('error', error => console.log(`Este es el error ${error}`))
 
 // ----------------------------------------
 
-// Mascotas 
+// DEFINICION DE RUTAS
 const routerProductos = express.Router()
 const routerInicio = express.Router()
 
 // INICIALIZACION DE CONTENEDOR
 const Producto1 = new Contenedor('./products/productos.txt')
 
-
 // RUTAS
-app.use('/productos', routerProductos)
+app.use('/api/productos', routerProductos)
 app.use('/', routerInicio)
-
 
 //MIDDLEWARES
 app.use(express.json())
@@ -38,8 +36,14 @@ routerProductos.use(urlencoded({ extended: true }))
 app.use(express.static('public'))
 
 // ENDPOINTS)
-app.get('/productos', async function (req, res) {
+app.get('/', (req, res) => {
+    res.sendFile(__dirname, 'index.html')
+})
+routerProductos.get('/', async function (req, res) {
     res.json(await Producto1.getAll())
+})
+routerProductos.get('/:id', async function (req, res) {
+    res.json(await Producto1.getById(parseInt(req.params.id)))
 })
 app.get('/productoRandom', async function (req, res) {
     res.json(await Producto1.productRandom())

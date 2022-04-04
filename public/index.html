@@ -12,7 +12,7 @@
 <body>
   <div class="contenedor-formulario">
     <h1>Formulario ingreso de productos</h1>
-    <form action="/productos/guardar" method="POST">
+    <form action="/api/productos/guardar" method="POST">
       <ul>
         <li><span>Nombre: </span><input type="text" name="nombre" /></li>
         <li><span>Precio: </span><input type="text" name="precio" /></li>
@@ -21,7 +21,7 @@
       </ul>
     </form>
     <ul class="botones-opciones">
-      <li><button>Ver productos</button></li>
+      <li><button onclick="location.href='api/productos'">Ver productos</button></li>
     </ul>
   </div>
 </body>

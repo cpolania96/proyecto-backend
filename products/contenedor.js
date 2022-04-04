@@ -35,7 +35,7 @@ class Contenedor {
         try {
             let contenido = await this.readFile()
             const findById = () => contenido.find(cont => cont.id === id)
-            console.log(findById());
+            return findById()
         } catch (error) {
             error
         }
