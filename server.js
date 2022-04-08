@@ -1,7 +1,8 @@
 //IMPORTS
 const express = require('express')
 const { urlencoded } = require('express')
-const Contenedor = require('./../products/contenedor')
+const res = require('express/lib/response')
+const Contenedor = require('./products/contenedor')
 
 // LISTEN SERVER
 const app = express()
@@ -35,13 +36,26 @@ routerProductos.use(urlencoded({ extended: true }))
 // ARCHIVOS ESTÁTICOS
 app.use(express.static('public'))
 
+//EJS CONFIG
+app.set('views', './views')
+app.set('view engine', 'ejs')
+
+//Options
+
+
+
 // ENDPOINTS)
-app.get('/', (req, res) => {
-    res.sendFile(__dirname, 'index.html')
-})
-routerProductos.get('/', async function (req, res) {
-    res.json(await Producto1.getAll())
-})
+routerInicio.get('/', async (req, res) => {
+    try {
+        let productos = await Producto1.getAll()
+        res.render('index', { productos })
+    } catch (e) {
+        next(e)
+    }
+}
+
+)
+
 routerProductos.get('/:id', async function (req, res) {
     res.json(await Producto1.getById(parseInt(req.params.id)))
 })
@@ -56,7 +70,7 @@ routerProductos.post('/guardar', async function (req, res) {
             thumbnail: req.body.urlimg
         }
     )
-    res.json('<h1>Producto Guardado Exitosamente</h1>')
+    res.redirect('/')
 })
 routerProductos.delete('/:id', async function (req, res) {
     res.json(await Producto1.deleteById(parseInt(req.params.id)))
