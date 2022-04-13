@@ -74,6 +74,7 @@ routerProductos.post('/guardar', async function (req, res) {
 })
 routerProductos.delete('/:id', async function (req, res) {
     res.json(await Producto1.deleteById(parseInt(req.params.id)))
+    res.redirect('/')
 })
 
 

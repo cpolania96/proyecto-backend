@@ -25,8 +25,6 @@ class Contenedor {
             }
             contenido.push(producto)
             await fs.promises.writeFile(this.archivo, JSON.stringify(contenido))
-            console.log('Escrito correctamente')
-            console.log(`El id del archivo es ${producto.id}`)
         } catch (error) {
             console.log(error)
         }
