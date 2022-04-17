@@ -1,7 +1,6 @@
-const fs = require('fs');
-const productos = require('./productos')
+import fs from 'fs'
 
-class Contenedor {
+class AccessData {
     constructor(archivo) {
         this.archivo = archivo
     }
@@ -75,7 +74,7 @@ class Contenedor {
     }
 }
 
-module.exports = Contenedor
+export default AccessData
 
 
 

@@ -3,13 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
+  "type": "module",
   "scripts": {
-    "start": "node server/server.js",
+    "start": "node src/app.js",
     "build-css": "node-sass --include-path scss src/scss/main.scss public/css/styles.css",
     "watch-css": "nodemon -e scss -x \"npm run build-css\"",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "server-dev": "nodemon server.js"
+    "server-dev": "nodemon src/app.js"
   },
   "author": "",
   "license": "ISC",
